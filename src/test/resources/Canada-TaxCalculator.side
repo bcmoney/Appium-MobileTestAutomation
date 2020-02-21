@@ -1,0 +1,148 @@
+{
+  "id": "46ffdbc6-d2ee-401a-8ba3-a0bdc9b85dea",
+  "version": "2.0",
+  "name": "TaxCalculator",
+  "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+  "tests": [{
+    "id": "7eef5202-d07a-464f-92ad-20dd9ae09416",
+    "name": "CanadaTaxCalculator",
+    "commands": [{
+      "id": "988f79f3-31d5-4f68-a191-7298c5854431",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cc11c1ae-365b-4d4a-aa6b-816390386cc2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1295x695",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "615c58f4-5f16-42b7-8b8a-0aee7b90f15f",
+      "comment": "",
+      "command": "click",
+      "target": "id=ProvOrTerr",
+      "targets": [
+        ["id=ProvOrTerr", "id"],
+        ["name=Province", "name"],
+        ["css=#ProvOrTerr", "css:finder"],
+        ["xpath=//select[@id='ProvOrTerr']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7b9f5163-38a1-4894-9cd1-77c08513d5a2",
+      "comment": "",
+      "command": "select",
+      "target": "id=ProvOrTerr",
+      "targets": [],
+      "value": "label=New Brunswick"
+    }, {
+      "id": "e8303019-7b1a-4308-8c4b-0fa2bf1ae9fa",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(5)",
+      "targets": [
+        ["css=option:nth-child(5)", "css:finder"],
+        ["xpath=//option[@value='nb']", "xpath:attributes"],
+        ["xpath=//select[@id='ProvOrTerr']/option[5]", "xpath:idRelative"],
+        ["xpath=//option[5]", "xpath:position"],
+        ["xpath=//option[contains(.,'New Brunswick')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d68b23f-9387-4d85-9da3-3db80fa47dc9",
+      "comment": "",
+      "command": "click",
+      "target": "id=priceinput",
+      "targets": [
+        ["id=priceinput", "id"],
+        ["css=#priceinput", "css:finder"],
+        ["xpath=//input[@id='priceinput']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "04e10994-a6a8-4c01-8f68-3dc3f343371c",
+      "comment": "",
+      "command": "type",
+      "target": "id=priceinput",
+      "targets": [
+        ["id=priceinput", "id"],
+        ["css=#priceinput", "css:finder"],
+        ["xpath=//input[@id='priceinput']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": "100"
+    }, {
+      "id": "83b375af-4971-4e26-9ad5-648d0bc16cb5",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=(//label[@id='SwitchLabel'])[2]",
+      "targets": [
+        ["xpath=(//label[@id='SwitchLabel'])[2]", "xpath:attributes"],
+        ["xpath=//form[@id='form']/label[4]", "xpath:idRelative"],
+        ["xpath=//label[4]", "xpath:position"],
+        ["xpath=//label[contains(.,'Before taxes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cff7d303-11dd-4820-b1bf-31382ae96990",
+      "comment": "",
+      "command": "click",
+      "target": "name=BefOrAft",
+      "targets": [
+        ["name=BefOrAft", "name"],
+        ["css=#form > input:nth-child(8)", "css:finder"],
+        ["xpath=//input[@name='BefOrAft']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/input[2]", "xpath:idRelative"],
+        ["xpath=//form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "efbf8d15-a2f4-4be1-8437-5b7abbc98a46",
+      "comment": "",
+      "command": "click",
+      "target": "id=calculate",
+      "targets": [
+        ["id=calculate", "id"],
+        ["css=#calculate", "css:finder"],
+        ["xpath=//button[@id='calculate']", "xpath:attributes"],
+        ["xpath=//form[@id='form']/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Calculate')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1aa4b930-c0b1-4e26-b0be-499fc16c9e39",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=Tot",
+      "targets": [
+        ["id=Tot", "id"],
+        ["css=#Tot", "css:finder"],
+        ["xpath=//span[@id='Tot']", "xpath:attributes"],
+        ["xpath=//div[@id='TotalLine']/span", "xpath:idRelative"],
+        ["xpath=//div[4]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'$115.00')]", "xpath:innerText"]
+      ],
+      "value": "$115.00"
+    }]
+  }],
+  "suites": [{
+    "id": "667799d5-e2a8-490b-b4b4-9cd00c4419b8",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["7eef5202-d07a-464f-92ad-20dd9ae09416"]
+  }],
+  "urls": ["https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/calculator.html"],
+  "plugins": []
+}

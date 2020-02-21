@@ -1,0 +1,116 @@
+{
+  "id": "9610dfcd-a7a9-44f9-93c7-3fba0df89c98",
+  "version": "2.0",
+  "name": "CalculatorWS",
+  "url": "http://192.168.2.16:8080",
+  "tests": [{
+    "id": "05f86917-b9d7-42a9-9512-26496ae3d376",
+    "name": "Add",
+    "commands": [{
+      "id": "e5d890c4-dd10-46f3-8a79-841ad228249e",
+      "comment": "",
+      "command": "open",
+      "target": "/mavenCalculator/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "75b91f17-f252-412b-abab-f38d6322a2d2",
+      "comment": "",
+      "command": "click",
+      "target": "id=addend",
+      "targets": [
+        ["id=addend", "id"],
+        ["name=PARAMadd0", "name"],
+        ["css=#addend", "css:finder"],
+        ["xpath=//input[@id='addend']", "xpath:attributes"],
+        ["xpath=//form[@id='addition']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07b84b78-f0fc-43f8-a749-76df6badd112",
+      "comment": "",
+      "command": "type",
+      "target": "id=addend",
+      "targets": [
+        ["id=addend", "id"],
+        ["name=PARAMadd0", "name"],
+        ["css=#addend", "css:finder"],
+        ["xpath=//input[@id='addend']", "xpath:attributes"],
+        ["xpath=//form[@id='addition']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "5f38b7de-4daa-4a7c-97b0-6bd81c3c6850",
+      "comment": "",
+      "command": "click",
+      "target": "id=augend",
+      "targets": [
+        ["id=augend", "id"],
+        ["name=PARAMadd1", "name"],
+        ["css=#augend", "css:finder"],
+        ["xpath=//input[@id='augend']", "xpath:attributes"],
+        ["xpath=//form[@id='addition']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7a0adf73-84a8-4d68-81ec-af383b3500ef",
+      "comment": "",
+      "command": "type",
+      "target": "id=augend",
+      "targets": [
+        ["id=augend", "id"],
+        ["name=PARAMadd1", "name"],
+        ["css=#augend", "css:finder"],
+        ["xpath=//input[@id='augend']", "xpath:attributes"],
+        ["xpath=//form[@id='addition']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "3"
+    }, {
+      "id": "d1221918-add0-4bed-9f89-ba0bc5cac7d8",
+      "comment": "",
+      "command": "click",
+      "target": "id=add",
+      "targets": [
+        ["id=add", "id"],
+        ["name=action", "name"],
+        ["css=#add", "css:finder"],
+        ["xpath=//input[@id='add']", "xpath:attributes"],
+        ["xpath=//form[@id='addition']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6815d697-fb10-4260-be1b-bf95690b085a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1295x695",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cef17eab-70b1-434c-8eb0-239e7715ebf6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=b",
+      "targets": [
+        ["css=b", "css:finder"],
+        ["xpath=//b", "xpath:position"],
+        ["xpath=//b[contains(.,'5')]", "xpath:innerText"]
+      ],
+      "value": "5"
+    }]
+  }],
+  "suites": [{
+    "id": "116e81ce-4bca-426c-b8d5-5b48111ba8a3",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["05f86917-b9d7-42a9-9512-26496ae3d376"]
+  }],
+  "urls": ["http://192.168.2.16:8080/"],
+  "plugins": []
+}
