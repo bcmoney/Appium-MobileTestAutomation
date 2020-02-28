@@ -26,8 +26,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -55,36 +55,34 @@ import io.appium.java_client.service.local.flags.GeneralServerFlag;
  */
 @Tag("mobile-app-webapp")
 @TestInstance(Lifecycle.PER_CLASS)
-public class AppiumTest {
+public class AppiumTestiOS {
 	
 	private AppiumDriverLocalService appiumService;
 	private AppiumDriver<MobileElement> appiumDriver;
 	private WebDriver seleniumDriver;
 	
-	private static final String NODEJS_HOME = "C:\\APPS\\NodeJS\\node.exe";
-	private static final String APPIUM_HOME = "C:\\APPS\\Appium\\";
-	private static final String APPIUM_JS = "C:\\APPS\\Appium\\";
+	private static final String NODEJS_HOME = "/usr/local/bin/node";
+//	private static final String NODEJS_HOME = "C:\\APPS\\NodeJS\\node.exe";
+	private static final String APPIUM_HOME = "/usr/local/bin/appium";
+//	private static final String APPIUM_HOME = "C:\\APPS\\Appium\\";
 	private static final int APPIUM_PORT = 4723;
 	private static final String APPIUM_URL = "http://"+TestUtils.getIP()+":"+APPIUM_PORT+"/wd/hub"; //Appium Server path (default local, but could be remote or cloud)
 	
-//	private static final String DRIVER_PATH = "/usr/bin/safaridriver"; //iOS+Safari - Mac
-//	private static final String DRIVER_PATH = "/apps/TestAutomation/Selenium/WebDrivers/Chrome/chromedriver_mac/chromedriver"; //Android+Chrome - Mac
-//	private static final String DRIVER_PATH = "/apps/TestAutomation/Selenium/WebDrivers/FireFox//geckodriver-v0.26.0-win64//geckodriver.exe"; //Android+FF - Windows
-	private static final String DRIVER_PATH = "C:\\APPS\\TestAutomation\\Selenium\\WebDrivers\\Chrome\\chromedriver_win32\\chromedriver.exe"; //Android+Chrome - Windows
-	private static final String BROWSER_NAME = "Chrome"; //"Firefox"   "Safari"
-	private static final String MOBILE_OS = "Android"; //"iOS"
-	private static final String MOBILE_OS_VERSION = "9.0"; //"4.4.2"   "7.0"   "8.0"  "13.0" etc
-	private static final String DEVICE_NAME = "Galaxy Nexus API 28"; //change to match your DeviceName
-	private static final String DEVICE_UDID = "12308992341-320490-91239043290129391023"; //should match your actual Device UDID
+	private static final String DRIVER_PATH = "/usr/bin/safaridriver"; //iOS+Safari - Mac
+//	private static final String DRIVER_PATH = "/opt/TestAutomation/Selenium/WebDrivers/Chrome/chromedriver_mac/chromedriver"; //Android+Chrome - Mac
+//	private static final String DRIVER_PATH = "/opt/TestAutomation/Selenium/WebDrivers/FireFox/geckodriver-v0.26.0-win64//geckodriver.exe"; //Android+FF - Windows
+//	private static final String DRIVER_PATH = "C:\\APPS\\TestAutomation\\Selenium\\WebDrivers\\Chrome\\chromedriver_win32\\chromedriver.exe"; //Android+Chrome - Windows
+
+	private static final String BROWSER_NAME = "Safari"; //"Firefox"   "Chrome"
+	private static final String MOBILE_OS = "iOS"; //"Android"
+	private static final String MOBILE_OS_VERSION = "13.3"; //"4.4.2"   "7.0"   "8.0"  "9.0"  "12.0" etc
+	private static final String DEVICE_NAME = "iPhone 11 Pro Max"; //change to match your DeviceName, i.e. "Galaxy Nexus API 28"
+	private static final String DEVICE_UDID = "2350437B-D31B-4C28-994A-509A4A14B976"; //should match your actual Device UDID
 	
 	//App
-	private static final String APP_PACKAGE = "com.oultoncollege.tipcalculator"; //package name of App under test
-	private static final String APP_MAIN_ACTIVITY = "TipCalculatorActivity"; //main activity class of App under test
-	
-	//WebApp
-	private static final String PROTOCOL = "http"; //protocol of WebApp under test
-	private static final String PORT = "9090"; //port of WebApp under test (use 80 for default web traffic)
-	private static final String PATH = "/mavenCalculator/"; //path of WebApp under test
+	private static final String APP_PACKAGE = "com.oultoncollege.pointofsale"; //package name of App under test
+	private static final String APP_MAIN_ACTIVITY = "PointOfSaleActivity"; //main activity class of App under test
+
 	
 
 	@BeforeAll
@@ -145,20 +143,20 @@ public class AppiumTest {
 	/* Mobile App test example */
 	@Test
 	public void testAppCalculator() throws Exception {
-//		AndroidElement billAmount = (AndroidElement) new WebDriverWait(appiumDriver, 30).until(ExpectedConditions.elementToBeClickable(MobileBy.id("billAmountEditText")));		
-//		AndroidElement billAmount = (AndroidElement) new WebDriverWait(appiumDriver, 30).until(ExpectedConditions.visibilityOfElementLocated(MobileBy.id(APP_PACKAGE+":id/billAmountEditText")));
-		AndroidElement billAmount = (AndroidElement) appiumDriver.findElement(MobileBy.id("billAmountEditText"));
-//		AndroidElement billAmount = (AndroidElement) appiumDriver.findElementById(APP_PACKAGE+":id/billAmountEditText");
+//		IOSElement billAmount = (IOSElement) new WebDriverWait(appiumDriver, 30).until(ExpectedConditions.elementToBeClickable(MobileBy.id("billAmountEditText")));		
+//		IOSElement billAmount = (IOSElement) new WebDriverWait(appiumDriver, 30).until(ExpectedConditions.visibilityOfElementLocated(MobileBy.id(APP_PACKAGE+":id/billAmountEditText")));
+		IOSElement billAmount = (IOSElement) appiumDriver.findElement(MobileBy.id("billAmountEditText"));
+//		IOSElement billAmount = (IOSElement) appiumDriver.findElementById(APP_PACKAGE+":id/billAmountEditText");
 //		List<WebElement> editText = appiumDriver.findElements(By.className("android.widget.EditText"));
-//		AndroidElement billAmount = (AndroidElement) editText.get(0);
+//		IOSElement billAmount = (IOSElement) editText.get(0);
 		billAmount.clear();
 		billAmount.setValue("50");
 		
-		AndroidElement calculateButton = (AndroidElement) appiumDriver.findElement(MobileBy.id("calculateButton"));
-		calculateButton.click();
+//		IOSElement calculateButton = (IOSElement) appiumDriver.findElement(MobileBy.id("calculateButton"));
+//		calculateButton.click();
 		
 		final String EXPECTED_RESULT = "$57.50";
-		AndroidElement totalAmount = (AndroidElement) appiumDriver.findElement(MobileBy.id("totalTextView"));
+		IOSElement totalAmount = (IOSElement) appiumDriver.findElement(MobileBy.id("totalTextView"));
 		assertEquals(EXPECTED_RESULT, totalAmount.getText());
 	}
 
@@ -184,7 +182,7 @@ public class AppiumTest {
 	
 	
 	public static void main(String[] args) {
-		AppiumTest tc = new AppiumTest();
+		AppiumTestiOS tc = new AppiumTestiOS();
 
 		//Create Appium WebDriver instance to connect to the Appium server
 		try {
@@ -213,7 +211,7 @@ public class AppiumTest {
 				capabilities.setCapability("unicodekeyboard", true);
 
 			//Test#2 - WebApp
-			tc.seleniumDriver = new AndroidDriver<WebElement>(new URL(APPIUM_URL), capabilities);
+			tc.seleniumDriver = new IOSDriver<WebElement>(new URL(APPIUM_URL), capabilities);
 			tc.testWebCalculator();
 		   
 		} catch (Exception ex) {
